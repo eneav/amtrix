@@ -1,0 +1,16 @@
+.header {
+  margin-bottom: 64px;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    gap: 32px;
+  }
+}

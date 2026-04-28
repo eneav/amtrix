@@ -1,0 +1,105 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 80px;
+}
+
+.desc {
+  max-width: 360px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.card {
+  background: var(--bg-card);
+  padding: 48px 36px;
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s;
+  cursor: default;
+  height: 100%;
+}
+.card:hover {
+  transform: translateY(-4px);
+  background: #1c1c1c;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.card:hover::before { opacity: 1; }
+
+.num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(200, 255, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  font-size: 1.3rem;
+}
+
+.card h3 {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.card p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.arrow {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 900px) {
+  .header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .desc { text-align: left; }
+  .grid { grid-template-columns: 1fr; }
+}

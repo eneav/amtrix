@@ -1,0 +1,35 @@
+.wrap {
+  overflow: hidden;
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.track {
+  display: flex;
+  gap: 64px;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.item {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.item::after {
+  content: '✦';
+  color: var(--accent);
+  font-size: 0.6rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
