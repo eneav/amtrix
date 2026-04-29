@@ -7,13 +7,17 @@ import styles from './Team.module.css';
 const team = [
   {
     name: 'Alex Müller',
-    role: 'Creative Director',
-    imageSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=530&fit=crop&crop=faces',
+    title: 'Creative Director',
+    handle: 'alex.amtrix',
+    status: 'Online',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop',
   },
   {
     name: 'Sarah Weber',
-    role: 'Marketing Strategin',
-    imageSrc: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=530&fit=crop&crop=faces',
+    title: 'Marketing Strategin',
+    handle: 'sarah.amtrix',
+    status: 'Online',
+    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop',
   },
 ];
 
@@ -35,8 +39,16 @@ export default function Team() {
             <ProfileCard
               key={member.name}
               name={member.name}
-              role={member.role}
-              imageSrc={member.imageSrc}
+              title={member.title}
+              handle={member.handle}
+              status={member.status}
+              avatarUrl={member.avatarUrl}
+              showUserInfo={false}
+              enableTilt={true}
+              enableMobileTilt={false}
+              behindGlowEnabled={true}
+              behindGlowColor="rgba(200, 255, 0, 0.4)"
+              innerGradient="linear-gradient(145deg, rgba(200,255,0,0.08) 0%, rgba(0,0,0,0.4) 100%)"
             />
           ))}
         </div>
