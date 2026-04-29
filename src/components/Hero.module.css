@@ -119,4 +119,8 @@
   .hero { padding: 120px 24px 60px; }
   .stats { gap: 32px; }
   .bottom { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .bgWrap { inset: -10% -30%; }
+  .bgOverlay {
+    background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.7) 50%, var(--bg) 100%);
+  }
 }

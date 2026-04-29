@@ -14,6 +14,7 @@ export default function Navbar() {
       </a>
       <ul className={styles.links}>
         <li><button onClick={() => scrollTo('services')}>Services</button></li>
+        <li><button onClick={() => scrollTo('showreel')}>Showreel</button></li>
         <li><button onClick={() => scrollTo('team')}>Team</button></li>
         <li><button onClick={() => scrollTo('about')}>Über uns</button></li>
         <li><button onClick={() => scrollTo('contact')}>Kontakt</button></li>
