@@ -4,67 +4,103 @@ import { useRef, useEffect, useState } from 'react';
 import Reveal from './Reveal';
 import styles from './Showreel.module.css';
 
-const videos = [
+const projects = [
   {
     id: 1,
     title: 'Showreel',
     client: 'amtrixmarketing',
-    src: '/videos/showreel-1.mp4',
+    image: '/showreel/project-1.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DXZAWZRAvbJ/',
   },
   {
     id: 2,
     title: 'Showreel',
     client: 'amtrixmarketing',
-    src: '/videos/showreel-2.mp4',
+    image: '/showreel/project-2.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DXuLJrZiJ4t/',
   },
   {
     id: 3,
     title: 'Showreel',
     client: 'amtrixmarketing',
-    src: '/videos/showreel-3.mp4',
+    image: '/showreel/project-3.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DWtHTiugpw-/',
   },
   {
     id: 4,
     title: 'Showreel',
     client: 'amtrixmarketing',
-    src: '/videos/showreel-4.mp4',
+    image: '/showreel/project-4.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DWg6Yp4DY_3/',
   },
   {
     id: 5,
     title: 'Showreel',
     client: 'amtrixmarketing',
-    src: '/videos/showreel-5.mp4',
+    image: '/showreel/project-5.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DWbO3vfjQNE/',
   },
   {
     id: 6,
     title: 'Showreel',
     client: 'amtrixmarketing',
-    src: '/videos/showreel-6.mp4',
+    image: '/showreel/project-6.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DWHTwFeDUzf/',
+  },
+  {
+    id: 7,
+    title: 'Showreel',
+    client: 'amtrixmarketing',
+    image: '/showreel/project-7.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DV3ORXuDaJB/',
+  },
+  {
+    id: 8,
+    title: 'Showreel',
+    client: 'amtrixmarketing',
+    image: '/showreel/project-8.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DV1YhzGAlXf/',
+  },
+  {
+    id: 9,
+    title: 'Showreel',
+    client: 'amtrixmarketing',
+    image: '/showreel/project-9.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DWRgy0Ngr2A/',
+  },
+  {
+    id: 10,
+    title: 'Showreel',
+    client: 'amtrixmarketing',
+    image: '/showreel/project-10.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DV9DlQFgnlp/',
+  },
+  {
+    id: 11,
+    title: 'Showreel',
+    client: 'amtrixmarketing',
+    image: '/showreel/project-11.jpg',
+    instagramUrl: 'https://www.instagram.com/p/DXzECGGo82u/',
   },
 ];
 
-// Verdoppelte Liste für nahtlosen Loop
-const loopedVideos = [...videos, ...videos];
+const loopedProjects = projects.length > 1 ? [...projects, ...projects] : projects;
 
 export default function Showreel() {
   const carouselRef = useRef<HTMLDivElement>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-Slide Animation via scrollLeft
+  // Auto-Slide Animation
   useEffect(() => {
     const carousel = carouselRef.current;
-    if (!carousel) return;
+    if (!carousel || projects.length <= 1) return;
 
     let animationId: number;
-    const speed = 0.6; // Pixel pro Frame
+    const speed = 0.6;
 
     const animate = () => {
       if (!isPaused && carousel) {
         carousel.scrollLeft += speed;
-
-        // Bei der Hälfte zurückspringen (nahtloser Loop, da Videos verdoppelt sind)
         const halfWidth = carousel.scrollWidth / 2;
         if (carousel.scrollLeft >= halfWidth) {
           carousel.scrollLeft = 0;
@@ -76,64 +112,6 @@ export default function Showreel() {
     animationId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationId);
   }, [isPaused]);
-
-  // Nur das mittig liegende Video abspielen + Highlight setzen
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    let rafId: number;
-
-    const updateCenterVideo = () => {
-      const carouselRect = carousel.getBoundingClientRect();
-      const carouselCenter = carouselRect.left + carouselRect.width / 2;
-      const tolerance = 100;
-
-      videoRefs.current.forEach((video, idx) => {
-        if (!video) return;
-        const card = cardRefs.current[idx];
-        if (!card) return;
-
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const distance = Math.abs(cardCenter - carouselCenter);
-
-        if (distance < tolerance) {
-          if (video.paused) video.play().catch(() => {});
-          card.classList.add(styles.active);
-        } else {
-          if (!video.paused) video.pause();
-          card.classList.remove(styles.active);
-        }
-      });
-    };
-
-    const loop = () => {
-      updateCenterVideo();
-      rafId = requestAnimationFrame(loop);
-    };
-
-    rafId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
-
-  // Pausiere alle Videos wenn Section out of viewport
-  useEffect(() => {
-    const section = carouselRef.current?.parentElement;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) {
-          videoRefs.current.forEach((v) => v?.pause());
-        }
-      },
-      { threshold: 0 }
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
 
   const scroll = (direction: 'left' | 'right') => {
     const carousel = carouselRef.current;
@@ -157,7 +135,7 @@ export default function Showreel() {
           <div className={styles.headerRight}>
             <p className={styles.desc}>
               Ein Einblick in ausgewählte Projekte aus den letzten Monaten —
-              von Brand Identity bis Performance-Kampagnen.
+              auf Instagram findest du die vollständigen Cases.
             </p>
             <div className={styles.controls}>
               <button
@@ -179,41 +157,44 @@ export default function Showreel() {
         </div>
       </Reveal>
 
-      <div
-        className={styles.carousel}
-        ref={carouselRef}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div className={styles.track}>
-          {loopedVideos.map((video, idx) => (
-            <div
-              key={`${video.id}-${idx}`}
-              className={styles.card}
-              ref={(el) => {
-                cardRefs.current[idx] = el;
-              }}
-            >
-              <div className={styles.videoWrap}>
-                <video
-                  ref={(el) => {
-                    videoRefs.current[idx] = el;
-                  }}
-                  src={video.src}
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className={styles.video}
-                />
-                <div className={styles.overlay} />
-              </div>
-              <div className={styles.info}>
-                <span className={styles.client}>{video.client}</span>
-                <h3 className={styles.title}>{video.title}</h3>
-              </div>
-            </div>
-          ))}
+      <div className={styles.carouselWrap}>
+        <div
+          className={styles.carousel}
+          ref={carouselRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className={styles.track}>
+            {loopedProjects.map((project, idx) => (
+              <a
+                key={`${project.id}-${idx}`}
+                href={project.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.card}
+              >
+                <div className={styles.imageWrap}>
+                  <img
+                    src={project.image}
+                    alt={`${project.client} - ${project.title}`}
+                    loading="lazy"
+                    className={styles.image}
+                  />
+                  <div className={styles.overlay} />
+                  <div className={styles.playIcon}>
+                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                      <circle cx="28" cy="28" r="27" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M22 18L40 28L22 38V18Z" fill="currentColor" />
+                    </svg>
+                  </div>
+                </div>
+                <div className={styles.info}>
+                  <span className={styles.client}>{project.client}</span>
+                  <h3 className={styles.title}>{project.title}</h3>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className={styles.fadeLeft} />

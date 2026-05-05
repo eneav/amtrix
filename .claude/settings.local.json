@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(winget install ffmpeg --accept-source-agreements --accept-package-agreements 2>&1)",
+      "PowerShell(Tail -5)"
+    ]
+  }
+}

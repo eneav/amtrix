@@ -6,21 +6,20 @@ import styles from './Team.module.css';
 
 const team = [
   {
-    name: 'Alex Müller',
-    title: 'Creative Director',
-    handle: 'alex.amtrix',
+    name: 'Aykan A',  // ← echter Name
+    title: 'Creative Director',  // ← echte Rolle
+    handle: 'name.amtrix',
     status: 'Online',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop',
+    avatarUrl: '/team/aykan.jpg',  // ← Pfad zum Foto
   },
   {
-    name: 'Sarah Weber',
+    name: 'Lorik Gashi',
     title: 'Marketing Strategin',
-    handle: 'sarah.amtrix',
+    handle: 'name.amtrix',
     status: 'Online',
-    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop',
+    avatarUrl: '/team/lorik.jpg',  
   },
 ];
-
 export default function Team() {
   return (
     <section className="section" id="team">
