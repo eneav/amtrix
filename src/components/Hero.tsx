@@ -57,7 +57,6 @@ export default function Hero() {
           <div className={styles.ctaRow}>
             <a href="#contact" className={styles.cta}>
               Projekt starten
-              <span className={styles.ctaIcon}>↗</span>
             </a>
             <a href="#showreel" className={styles.ctaGhost}>
               Showreel ansehen
