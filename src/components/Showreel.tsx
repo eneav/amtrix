@@ -10,77 +10,77 @@ const projects = [
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-1.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DXZAWZRAvbJ/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 2,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-2.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DXuLJrZiJ4t/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 3,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-3.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DWtHTiugpw-/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 4,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-4.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DWg6Yp4DY_3/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 5,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-5.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DWbO3vfjQNE/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 6,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-6.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DWHTwFeDUzf/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 7,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-7.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DV3ORXuDaJB/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 8,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-8.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DV1YhzGAlXf/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 9,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-9.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DWRgy0Ngr2A/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 10,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-10.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DV9DlQFgnlp/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
   {
     id: 11,
     title: 'Showreel',
     client: 'amtrixmarketing',
     image: '/showreel/project-11.jpg',
-    instagramUrl: 'https://www.instagram.com/p/DXzECGGo82u/',
+    instagramUrl: 'https://www.instagram.com/amtrixmarketing/',
   },
 ];
 
@@ -113,15 +113,6 @@ export default function Showreel() {
     return () => cancelAnimationFrame(animationId);
   }, [isPaused]);
 
-  const scroll = (direction: 'left' | 'right') => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-    carousel.scrollBy({
-      left: direction === 'left' ? -420 : 420,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <section className={styles.section} id="showreel">
       <Reveal>
@@ -137,22 +128,6 @@ export default function Showreel() {
               Ein Einblick in ausgewählte Projekte aus den letzten Monaten —
               auf Instagram findest du die vollständigen Cases.
             </p>
-            <div className={styles.controls}>
-              <button
-                className={styles.controlBtn}
-                onClick={() => scroll('left')}
-                aria-label="Vorherige"
-              >
-                ←
-              </button>
-              <button
-                className={styles.controlBtn}
-                onClick={() => scroll('right')}
-                aria-label="Nächste"
-              >
-                →
-              </button>
-            </div>
           </div>
         </div>
       </Reveal>

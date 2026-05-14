@@ -36,7 +36,9 @@ export default function Hero() {
 
       <div className={styles.content}>
         <Reveal>
-          <div className={styles.label}>Marketing Agentur — Est. 2025</div>
+          <div className={styles.label}>
+            Marketing Agentur — Est. 2025
+          </div>
         </Reveal>
         <Reveal delay={0.1}>
           <h1 className={styles.title}>
@@ -51,7 +53,18 @@ export default function Hero() {
             mit Intention, Klarheit und Leidenschaft.
           </p>
         </Reveal>
-        <Reveal delay={0.3}>
+        <Reveal delay={0.28}>
+          <div className={styles.ctaRow}>
+            <a href="#contact" className={styles.cta}>
+              Projekt starten
+              <span className={styles.ctaIcon}>↗</span>
+            </a>
+            <a href="#showreel" className={styles.ctaGhost}>
+              Showreel ansehen
+            </a>
+          </div>
+        </Reveal>
+        <Reveal delay={0.38}>
           <div className={styles.bottom}>
             <div className={styles.stats}>
               <div className={styles.statItem}>

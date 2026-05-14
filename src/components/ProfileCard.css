@@ -375,7 +375,7 @@
   font-weight: 600;
   margin: 0;
   font-size: min(5svh, 3em);
-  background-image: linear-gradient(to bottom, #fff, #6f6fbe);
+  background-image: linear-gradient(to bottom, #f0ece4 30%, #c8ff00 100%);
   background-size: 1em 1.5em;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -383,14 +383,16 @@
 }
 
 .pc-details p {
-  font-weight: 600;
+  font-weight: 500;
   position: relative;
-  top: -12px;
+  top: 8px;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   margin: 0 auto;
   width: min-content;
-  background-image: linear-gradient(to bottom, #fff, #4a4ac0);
+  background-image: linear-gradient(to bottom, rgba(200, 255, 0, 0.95), rgba(200, 255, 0, 0.5));
   background-size: 1em 1.5em;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -482,8 +484,8 @@
   }
 
   .pc-details p {
-    font-size: 12px;
-    top: -8px;
+    font-size: 11px;
+    top: 6px;
   }
 
   .pc-user-info {

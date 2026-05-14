@@ -17,7 +17,7 @@ const team = [
     title: 'Marketing Strategin',
     handle: 'name.amtrix',
     status: 'Online',
-    avatarUrl: '/team/lorik.jpg',  
+    avatarUrl: '/team/lorik.jpg',  // ← Pfad zum zweiten Foto
   },
 ];
 export default function Team() {
